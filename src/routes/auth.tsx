@@ -13,9 +13,8 @@ import { maskPhone, onlyDigits, signInSchema, signUpSchema } from "@/lib/validat
 const safePath = (p?: string) => (p && p.startsWith("/") && !p.startsWith("//") ? p : "/booking");
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (s: Record<string, unknown>) => ({
-    redirect: typeof s.redirect === "string" ? s.redirect : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): { redirect?: string } =>
+    typeof s["redirect"] === "string" ? { redirect: s["redirect"] } : {},
   head: () => ({
     meta: [
       { title: "Entrar ou cadastrar · Lar de Patas" },
@@ -27,11 +26,11 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
-type Errors = Record<string, string | undefined>;
+type Errors = Partial<Record<"fullName" | "email" | "phone" | "password", string>>;
 const toErrors = (e: z.ZodError): Errors =>
-  Object.fromEntries(e.issues.map((i) => [String(i.path[0]), i.message]));
+  Object.fromEntries(e.issues.map((i) => [String(i.path[0]), i.message])) as Errors;
 
-function FieldError({ msg }: { msg?: string }) {
+function FieldError({ msg }: { msg?: string | undefined }) {
   return msg ? <p className="mt-1 text-xs text-destructive">{msg}</p> : null;
 }
 
