@@ -5,8 +5,8 @@ export const Route = createFileRoute("/api/public/seed-admin")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const email = process.env.SEED_ADMIN_EMAIL;
-        const password = process.env.SEED_ADMIN_PASSWORD;
+        const email = process.env["SEED_ADMIN_EMAIL"];
+        const password = process.env["SEED_ADMIN_PASSWORD"];
         if (!email || !password) return Response.json({ error: "seed not configured" }, { status: 500 });
         if (request.headers.get("x-seed-token") !== password) {
           return Response.json({ error: "unauthorized" }, { status: 401 });
