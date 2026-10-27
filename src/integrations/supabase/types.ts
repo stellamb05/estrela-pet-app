@@ -14,6 +14,154 @@ export type Database = {
   }
   public: {
     Tables: {
+      app_settings: {
+        Row: {
+          boarding_base_price_cents: number
+          extra_pet_price_cents: number
+          id: string
+          sitter_base_price_cents: number
+          updated_at: string
+        }
+        Insert: {
+          boarding_base_price_cents: number
+          extra_pet_price_cents: number
+          id?: string
+          sitter_base_price_cents: number
+          updated_at?: string
+        }
+        Update: {
+          boarding_base_price_cents?: number
+          extra_pet_price_cents?: number
+          id?: string
+          sitter_base_price_cents?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      booking_pets: {
+        Row: {
+          booking_id: string
+          id: string
+          pet_id: string
+        }
+        Insert: {
+          booking_id: string
+          id?: string
+          pet_id: string
+        }
+        Update: {
+          booking_id?: string
+          id?: string
+          pet_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "booking_pets_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "booking_pets_pet_id_fkey"
+            columns: ["pet_id"]
+            isOneToOne: false
+            referencedRelation: "pets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bookings: {
+        Row: {
+          created_at: string
+          customer_phone: string
+          end_date: string
+          id: string
+          profile_id: string
+          service_type: string
+          start_date: string
+          status: string
+          total_cents: number
+        }
+        Insert: {
+          created_at?: string
+          customer_phone: string
+          end_date: string
+          id?: string
+          profile_id: string
+          service_type: string
+          start_date: string
+          status?: string
+          total_cents: number
+        }
+        Update: {
+          created_at?: string
+          customer_phone?: string
+          end_date?: string
+          id?: string
+          profile_id?: string
+          service_type?: string
+          start_date?: string
+          status?: string
+          total_cents?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pets: {
+        Row: {
+          active: boolean
+          created_at: string
+          emergency_contact: string | null
+          id: string
+          is_sociable: boolean
+          medical_notes: string | null
+          name: string
+          profile_id: string
+          routine_notes: string | null
+          type: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          emergency_contact?: string | null
+          id?: string
+          is_sociable: boolean
+          medical_notes?: string | null
+          name: string
+          profile_id: string
+          routine_notes?: string | null
+          type: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          emergency_contact?: string | null
+          id?: string
+          is_sociable?: boolean
+          medical_notes?: string | null
+          name?: string
+          profile_id?: string
+          routine_notes?: string | null
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pets_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string
@@ -68,6 +216,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      promote_to_admin: { Args: { _email: string }; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "cliente"
