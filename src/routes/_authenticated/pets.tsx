@@ -39,8 +39,8 @@ function PetsPage() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim()) return setError("Informe o nome do pet");
-    if (form.is_sociable === null) return setError("Responda se o pet é sociável com outros animais");
+    if (!form.name.trim()) { setError("Informe o nome do pet"); return; }
+    if (form.is_sociable === null) { setError("Responda se o pet é sociável com outros animais"); return; }
     setError(""); setSaving(true);
     const { data: u } = await supabase.auth.getUser();
     const payload = { ...form, name: form.name.trim(), is_sociable: form.is_sociable };
@@ -48,14 +48,14 @@ function PetsPage() {
       ? await supabase.from("pets").update(payload).eq("id", editing)
       : await supabase.from("pets").insert({ ...payload, profile_id: u.user!.id });
     setSaving(false);
-    if (res.error) return toast.error("Não foi possível salvar o pet");
+    if (res.error) { toast.error("Não foi possível salvar o pet"); return; }
     toast.success(editing ? "Pet atualizado" : "Pet cadastrado");
     setForm(empty); setEditing(null); load();
   };
 
   const remove = async (id: string) => {
     const { error } = await supabase.from("pets").update({ active: false }).eq("id", id);
-    if (error) return toast.error("Não foi possível remover");
+    if (error) { toast.error("Não foi possível remover"); return; }
     load();
   };
 
@@ -64,7 +64,7 @@ function PetsPage() {
     setForm({ name: p.name, type: p.type as "dog" | "cat", is_sociable: p.is_sociable, medical_notes: p.medical_notes ?? "", routine_notes: p.routine_notes ?? "", emergency_contact: p.emergency_contact ?? "" });
   };
 
-  const choice = (active: boolean) => (active ? "default" : "outline") as const;
+  const choice = (active: boolean) => (active ? "default" : "outline") as "default" | "outline";
 
   return (
     <PageShell title="Meus Pets" subtitle="Cadastre e gerencie seus pets.">

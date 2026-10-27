@@ -49,7 +49,7 @@ function BookingPage() {
   const canSubmit = !!q && !blocked && !saving;
 
   const submit = async () => {
-    if (!q || blocked) return;
+    if (!q || blocked) return undefined;
     setSaving(true);
     const { data: u } = await supabase.auth.getUser();
     const { data: prof } = await supabase.from("profiles").select("phone").eq("id", u.user!.id).maybeSingle();
@@ -57,10 +57,10 @@ function BookingPage() {
       profile_id: u.user!.id, service_type: service, status: "pending", start_date: start, end_date: end,
       total_cents: q.total, customer_phone: prof?.phone || "",
     }).select("id").single();
-    if (error || !booking) { setSaving(false); return toast.error("Não foi possível criar o agendamento"); }
+    if (error || !booking) { setSaving(false); toast.error("Não foi possível criar o agendamento"); return; }
     const { error: e2 } = await supabase.from("booking_pets").insert(chosen.map((p) => ({ booking_id: booking.id, pet_id: p.id })));
     setSaving(false);
-    if (e2) return toast.error("Agendamento criado, mas houve erro ao vincular os pets");
+    if (e2) { toast.error("Agendamento criado, mas houve erro ao vincular os pets"); return; }
     setDone(true);
   };
 
