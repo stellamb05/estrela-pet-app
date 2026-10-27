@@ -7,7 +7,7 @@ export type Settings = {
 
 const DAY = 86_400_000;
 const toUtc = (iso: string) => {
-  const [y, m, d] = iso.split("-").map(Number);
+  const [y = 0, m = 1, d = 1] = iso.split("-").map(Number);
   return Date.UTC(y, m - 1, d);
 };
 export const daysBetween = (a: string, b: string) => Math.round((toUtc(b) - toUtc(a)) / DAY);
