@@ -49,18 +49,20 @@ Um aplicativo próprio de autoatendimento (*One Person Business* O2O) elimina o 
 
 ---
 
-## 3. Prompts Consolidados e Regras de Negócio (PRD v5.0)
+## 3. Arquitetura de Prompts e Escopo do Produto (PRD v5.0)
 
-*(Consolidado dos 5 Prompts Estruturados aplicados no Lovable)*
-
-* **Prompt 1 (Bootstrap & Design):** Configuração de React, TS, Tailwind CSS, rotas (`/`, `/pets`, `/checkout`, `/admin`), formulário de perfil com regex para nome, máscara de 11 dígitos para WhatsApp e palette minimalista com cores da marca (#8D5B4C Terracota, #F3C35B Amarelo, #FCFAF8 Fundo).
+### ⚙️ Funcionalidades Entregues no MVP (V1)
+* **Prompt 1 (Bootstrap & Design):** Configuração de React, TS, Tailwind CSS, rotas (`/`, `/pets`, `/checkout`, `/admin`), formulário de perfil com regex para nome, máscara de 11 dígitos para WhatsApp e palette minimalista com cores da marca (`#8D5B4C` Terracota, `#F3C35B` Amarelo, `#FCFAF8` Fundo).
 * **Prompt 2 (Database & RLS):** Tabelas Supabase (`profiles`, `pets`, `bookings`), políticas de segurança RLS garantindo privacidade e Seed para conta Admin.
 * **Prompt 3 (Ficha do Pet & Trava de Sociabilidade):** Formulário de triagem completo (saúde, rotina, emergência e aceite LGPD). Lógica condicional: se o pet selecionado para Hospedagem marcar "Não" ou "Não sei" em sociabilidade, o sistema bloqueia a hospedagem e redireciona automaticamente para o serviço de Pet Sitter.
 
-  Próximos Passos (Backlog da V2)
-* **Prompt 4 (Precificação Dinâmica & Checkout):** Motor de cálculo que aplica 5% de desconto para reservas $\ge$ 30 dias, 3% para $\ge$ 15 dias e 5% de acréscimo de encaixe emergencial para agendamentos no mesmo dia/1 dia antes. Geração da cobrança de 50% de sinal.
-* **Prompt 5 (Painel Admin Kanban & Relatórios):** Interface visual Kanban com status (*Pending*, *Approved/In Progress*, *Completed*), real-time e exportação de relatórios em CSV/XLSX.
+---
 
+### 🚀 Próximos Passos (Backlog da V2)
+> *Funcionalidades projetadas no PRD v5.0 e priorizadas para o próximo ciclo de desenvolvimento (escopo congelado na V1 devido a restrições de cota computacional do ambiente):*
+
+* **Prompt 4 (Precificação Dinâmica & Checkout):** Motor de cálculo que aplica 5% de desconto para reservas $\ge$ 30 dias, 3% para $\ge$ 15 dias e 5% de acréscimo de encaixe emergencial para agendamentos no mesmo dia/1 dia antes. Geração da cobrança de 50% de sinal.
+* **Prompt 5 (Painel Admin Kanban & Relatórios):** Interface visual Kanban com status (*Pending*, *Approved/In Progress*, *Completed*), acompanhamento real-time e exportação de relatórios em CSV/XLSX.
 ---
 
 ## 4. Evidências da Interface
