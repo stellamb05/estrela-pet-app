@@ -1,11 +1,11 @@
-> 🚧 **Status do Projeto: Em Construção**  
-> *O MVP da Estrela Pet está na etapa final de compilação das regras de negócio e integrações via Vibe Coding.*  
+✅ Status: MVP V1 Publicado. (Limitações de créditos da plataforma exigiram o congelamento do escopo na V1)
+
 > 🗓️ **Lançamento e versão final pública previstos para:** 28/10/2026.
 
 # 🐾 Estrela Pet — Plataforma O2O de Hospedagem & Pet Sitter (Vibe Coding)
 
 > **MVP de Autoatendimento para Cuidados Pet com Gestão Rígida de Sociabilidade e Precificação Dinâmica.**  
-> **Acesse o aplicativo rodando ao vivo:** [Testar a Estrela Pet](COLE_AQUI_O_LINK_DO_LOVABLE)  
+> **Acesse o aplicativo rodando ao vivo:** https://estrela-pet.lovable.app  
 
 * **Projeto:** Estrela Pet (Vibe Coding & One Person Business)
 * **Aluna / PO / QA:** Stella Mendes Batista
@@ -56,6 +56,8 @@ Um aplicativo próprio de autoatendimento (*One Person Business* O2O) elimina o 
 * **Prompt 1 (Bootstrap & Design):** Configuração de React, TS, Tailwind CSS, rotas (`/`, `/pets`, `/checkout`, `/admin`), formulário de perfil com regex para nome, máscara de 11 dígitos para WhatsApp e palette minimalista com cores da marca (#8D5B4C Terracota, #F3C35B Amarelo, #FCFAF8 Fundo).
 * **Prompt 2 (Database & RLS):** Tabelas Supabase (`profiles`, `pets`, `bookings`), políticas de segurança RLS garantindo privacidade e Seed para conta Admin.
 * **Prompt 3 (Ficha do Pet & Trava de Sociabilidade):** Formulário de triagem completo (saúde, rotina, emergência e aceite LGPD). Lógica condicional: se o pet selecionado para Hospedagem marcar "Não" ou "Não sei" em sociabilidade, o sistema bloqueia a hospedagem e redireciona automaticamente para o serviço de Pet Sitter.
+
+  Próximos Passos (Backlog da V2)
 * **Prompt 4 (Precificação Dinâmica & Checkout):** Motor de cálculo que aplica 5% de desconto para reservas $\ge$ 30 dias, 3% para $\ge$ 15 dias e 5% de acréscimo de encaixe emergencial para agendamentos no mesmo dia/1 dia antes. Geração da cobrança de 50% de sinal.
 * **Prompt 5 (Painel Admin Kanban & Relatórios):** Interface visual Kanban com status (*Pending*, *Approved/In Progress*, *Completed*), real-time e exportação de relatórios em CSV/XLSX.
 
@@ -64,10 +66,13 @@ Um aplicativo próprio de autoatendimento (*One Person Business* O2O) elimina o 
 ## 4. Evidências da Interface
 
 *(Insira aqui os links/imagens do seu repositório)*
-- `![Home / Landing Page](link_da_imagem_1)`
-- `![Ficha do Pet com Trava](link_da_imagem_2)`
-- `![Checkout e Resumo Financeiro](link_da_imagem_3)`
-- `![Painel Kanban Admin](link_da_imagem_4)`
+- <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/679a2344-3ce3-4a96-835f-b9d975d2179f" />
+
+
+- <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/44c48e73-d22b-4d20-8f46-19a9b4df806d" />
+
+- <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/98a1fac8-556a-490c-87a2-62b2fa60a9c0" />
+
 
 ---
 
